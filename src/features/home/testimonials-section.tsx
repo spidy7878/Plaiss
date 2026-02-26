@@ -8,7 +8,7 @@ const TESTIMONIALS = [
 export function TestimonialsSection() {
   return (
     <section className="py-20 w-full flex flex-col items-center bg-white">
-      <div className="w-[95vw] max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="w-[95vw] max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
         {TESTIMONIALS.map((person) => (
           <div
             key={person.name}
