@@ -79,7 +79,7 @@ export function Header() {
               onMouseLeave={() => setHovered(null)}
             >
               <a
-                href="#"
+                href={item.label === 'Planters' ? '/planters' : '#'}
                 className={`relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full hover:text-black transition-colors px-2 py-1 ${
                   hovered === item.label ? 'text-blue-600' : ''
                 }`}
@@ -144,7 +144,7 @@ export function Header() {
             {NAV_ITEMS.map((item) => (
               <div key={item.label} className="flex flex-col gap-2">
                 <a
-                  href="#"
+                  href={item.label === 'Planters' ? '/planters' : '#'}
                   onClick={() => setMobileOpen(false)}
                   className="text-2xl font-normal text-black"
                 >
