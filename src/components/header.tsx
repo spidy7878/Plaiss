@@ -63,9 +63,12 @@ export function Header() {
         `}
       >
         {/* Logo */}
-        <div className="relative flex items-center">
+        <div className="relative flex items-center gap-3">
           <span className="text-4xl font-black font-(family-name:--font-montserrat) tracking-[-0.07em] uppercase leading-none text-black">
             P
+          </span>
+          <span className="text-sm font-semibold text-black/70 tracking-widest uppercase">
+            AWIN
           </span>
         </div>
 
