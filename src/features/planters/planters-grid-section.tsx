@@ -48,16 +48,16 @@ const FURNITURE_DATA = [
 
 export function PlantersGridSection() {
   return (
-    <section className="w-full max-w-[1400px] mx-auto px-6 md:px-12 pb-24">
+    <section className="w-full max-w-[1400px] mx-auto px-3 sm:px-6 md:px-12 pb-12 sm:pb-16 md:pb-24">
       {/* Planters Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-4 sm:mb-8">
         {PLANTERS_DATA.map((item, index) => (
           <CategoryCard key={index} title={item.title} image={item.image} />
         ))}
       </div>
 
       {/* Furniture Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
         {FURNITURE_DATA.map((item, index) => (
           <CategoryCard key={index} title={item.title} image={item.image} />
         ))}
