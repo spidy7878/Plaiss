@@ -1,11 +1,16 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 export function FooterSection() {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
   const [checked, setChecked] = useState(false)
+  const [error, setError] = useState('')
+
+  const isValidEmail = (value: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
@@ -43,11 +48,31 @@ export function FooterSection() {
           <div className="flex flex-row flex-wrap gap-8 md:gap-16 pt-2">
             {/* Shop Links */}
             <ul className="flex flex-col gap-4 text-white text-sm font-light">
-              <li className="hover:underline cursor-pointer">Sofas</li>
-              <li className="hover:underline cursor-pointer">Lounge Chairs</li>
-              <li className="hover:underline cursor-pointer">Tables</li>
-              <li className="hover:underline cursor-pointer">Chairs</li>
-              <li className="hover:underline cursor-pointer">Contact</li>
+              <li className="hover:underline cursor-pointer">
+                <Link href="/sofas" className="hover:underline">
+                  Sofas
+                </Link>
+              </li>
+              <li className="hover:underline cursor-pointer">
+                <Link href="/lounge-chairs" className="hover:underline">
+                  Lounge Chairs
+                </Link>
+              </li>
+              <li className="hover:underline cursor-pointer">
+                <Link href="/tables" className="hover:underline">
+                  Tables
+                </Link>
+              </li>
+              <li className="hover:underline cursor-pointer">
+                <Link href="/chairs" className="hover:underline">
+                  Chairs
+                </Link>
+              </li>
+              <li className="hover:underline cursor-pointer">
+                <a href="#contact" className="hover:underline">
+                  Contact
+                </a>
+              </li>
             </ul>
 
             {/* Policy Links */}
@@ -88,9 +113,19 @@ export function FooterSection() {
                 type="email"
                 placeholder="Enter Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full max-w-xs px-4 py-2.5 rounded-full bg-transparent border border-white/60 text-white placeholder:text-white/50 text-sm outline-none focus:border-white"
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setError('')
+                }}
+                className={`w-full max-w-xs px-4 py-2.5 rounded-full bg-transparent border text-white placeholder:text-white/50 text-sm outline-none transition-colors ${
+                  error
+                    ? 'border-red-400 focus:border-red-400'
+                    : 'border-white/60 focus:border-white'
+                }`}
               />
+              {error && (
+                <p className="text-red-400 text-xs mt-1 pl-2">{error}</p>
+              )}
             </div>
 
             <label className="flex items-center gap-2 cursor-pointer">
@@ -107,7 +142,20 @@ export function FooterSection() {
 
             <button
               onClick={() => {
-                if (email && checked) setSubscribed(true)
+                if (!email) {
+                  setError('Email address is required.')
+                  return
+                }
+                if (!isValidEmail(email)) {
+                  setError('Please enter a valid email address.')
+                  return
+                }
+                if (!checked) {
+                  setError('Please agree to subscribe.')
+                  return
+                }
+                setError('')
+                setSubscribed(true)
               }}
               className="bg-lime-300 text-black px-8 py-2.5 rounded-full text-sm font-semibold tracking-wide hover:bg-black hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg w-fit"
             >

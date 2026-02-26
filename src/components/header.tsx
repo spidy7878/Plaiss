@@ -1,16 +1,23 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const NAV_ITEMS = [
   {
     label: 'Study room',
-    sub: ['Lounge Chairs', 'Chairs', 'Tables', 'Contact'],
+    href: '#',
+    sub: [
+      { label: 'Lounge Chairs', href: '/lounge-chairs' },
+      { label: 'Chairs', href: '/chairs' },
+      { label: 'Tables', href: '/tables' },
+      { label: 'Contact', href: '#contact' },
+    ],
   },
-  { label: 'Dining', sub: [] },
-  { label: 'Bedroom', sub: [] },
-  { label: 'Living Room', sub: [] },
-  { label: 'Planters', sub: [] },
+  { label: 'Dining', href: '/dining', sub: [] },
+  { label: 'Bedroom', href: '/bedroom', sub: [] },
+  { label: 'Living Room', href: '/living-room', sub: [] },
+  { label: 'Planters', href: '/planters', sub: [] },
 ]
 
 export function Header() {
@@ -78,34 +85,36 @@ export function Header() {
               onMouseEnter={() => setHovered(item.label)}
               onMouseLeave={() => setHovered(null)}
             >
-              <a
-                href={item.label === 'Planters' ? '/planters' : '#'}
+              <Link
+                href={item.href}
                 className={`relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full hover:text-black transition-colors px-2 py-1 ${
                   hovered === item.label ? 'text-blue-600' : ''
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
               {item.sub.length > 0 && hovered === item.label && (
-                <div
-                  className={`absolute top-full left-0 mt-2 min-w-95 w-105 grid grid-cols-2 gap-x-40 gap-y-4 py-4 pr-16 pl-6 rounded z-50
-                    ${
-                      navState === 'scrolling'
-                        ? 'backdrop-blur-md bg-transparent border-none shadow-none'
-                        : 'bg-white shadow-xl'
-                    }
-                  `}
-                >
-                  {item.sub.map((sub) => (
-                    <a
-                      key={sub}
-                      href="#"
-                      className={`text-base whitespace-nowrap px-2 py-1 rounded transition-colors
-                        ${navState === 'scrolling' ? 'text-white hover:bg-white/10' : 'text-black hover:bg-black/5'}`}
-                    >
-                      {sub}
-                    </a>
-                  ))}
+                <div className="absolute top-full left-0 pt-2 z-50">
+                  <div
+                    className={`min-w-95 w-105 grid grid-cols-2 gap-x-40 gap-y-4 py-4 pr-16 pl-6 rounded
+                      ${
+                        navState === 'scrolling'
+                          ? 'backdrop-blur-md bg-transparent border-none shadow-none'
+                          : 'bg-white shadow-xl'
+                      }
+                    `}
+                  >
+                    {item.sub.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        className={`text-base whitespace-nowrap px-2 py-1 rounded transition-colors
+                        ${navState === 'scrolling' ? 'text-black hover:bg-black/10' : 'text-black hover:bg-black/5'}`}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -143,24 +152,24 @@ export function Header() {
           <nav className="flex flex-col gap-6">
             {NAV_ITEMS.map((item) => (
               <div key={item.label} className="flex flex-col gap-2">
-                <a
-                  href={item.label === 'Planters' ? '/planters' : '#'}
+                <Link
+                  href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className="text-2xl font-normal text-black"
                 >
                   {item.label}
-                </a>
+                </Link>
                 {item.sub.length > 0 && (
                   <div className="flex flex-col gap-2 pl-4 border-l border-black/20">
                     {item.sub.map((sub) => (
-                      <a
-                        key={sub}
-                        href="#"
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
                         onClick={() => setMobileOpen(false)}
                         className="text-base text-black/60 hover:text-black transition-colors"
                       >
-                        {sub}
-                      </a>
+                        {sub.label}
+                      </Link>
                     ))}
                   </div>
                 )}
