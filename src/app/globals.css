@@ -160,3 +160,12 @@
   border: 2px solid #fff;
   box-shadow: 0 0 0 1px #000;
 }
+
+/* Hide scrollbar across all browsers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

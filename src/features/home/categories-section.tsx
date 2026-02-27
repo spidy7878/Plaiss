@@ -6,7 +6,7 @@ export function CategoriesSection() {
       {/* All Planters Card */}
       <Link
         href="/planters"
-        className="relative min-h-105 flex flex-col justify-between pt-8 pl-8 pb-12 pr-12 bg-[#f8f6f3] border-r border-black"
+        className="relative min-h-105 flex flex-col justify-between pt-8 pl-8 pb-12 pr-12 bg-[#f8f6f3] md:border-r border-black"
       >
         <h2 className="text-2xl font-light text-black z-10">All Planters</h2>
         <div className="absolute inset-0">

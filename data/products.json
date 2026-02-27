@@ -1,0 +1,224 @@
+[
+  {
+    "id": 1,
+    "name": "SOLSTI",
+    "price": 1200,
+    "colors": [
+      {
+        "hex": "#D4C5A9",
+        "name": "Cream"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80",
+    "isNew": false,
+    "category": "sofas",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 2,
+    "name": "PUFFER",
+    "price": 1200,
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80",
+    "isNew": true,
+    "category": "sofas",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 3,
+    "name": "MELO",
+    "price": 1000,
+    "colors": [
+      {
+        "hex": "#9E9E9E",
+        "name": "Gray"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=900&q=80",
+    "isNew": false,
+    "category": "sofas",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 4,
+    "name": "DRIFT",
+    "price": 1100,
+    "colors": [
+      {
+        "hex": "#D4C5A9",
+        "name": "Cream"
+      },
+      {
+        "hex": "#9E9E9E",
+        "name": "Gray"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=900&q=80",
+    "isNew": true,
+    "category": "sofas",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 5,
+    "name": "AZURE",
+    "price": 1150,
+    "colors": [
+      {
+        "hex": "#2C3E6B",
+        "name": "Navy"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=900&q=80",
+    "isNew": false,
+    "category": "sofas",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 6,
+    "name": "HAVEN",
+    "price": 1050,
+    "colors": [
+      {
+        "hex": "#F5F5F0",
+        "name": "White"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=900&q=80",
+    "isNew": false,
+    "category": "sofas",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 7,
+    "name": "ARCH",
+    "price": 900,
+    "colors": [
+      {
+        "hex": "#C4A092",
+        "name": "Terracotta"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1517142089942-ba376ce32a2e?w=900&q=80",
+    "isNew": true,
+    "category": "lounge-chairs",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 8,
+    "name": "NEST",
+    "price": 850,
+    "colors": [
+      {
+        "hex": "#F5F5F0",
+        "name": "White"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80",
+    "isNew": false,
+    "category": "lounge-chairs",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 9,
+    "name": "CURVE",
+    "price": 950,
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=900&q=80",
+    "isNew": false,
+    "category": "lounge-chairs",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 10,
+    "name": "SLATE",
+    "price": 750,
+    "colors": [
+      {
+        "hex": "#9E9E9E",
+        "name": "Gray"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=900&q=80",
+    "isNew": false,
+    "category": "tables",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 11,
+    "name": "PINE",
+    "price": 680,
+    "colors": [
+      {
+        "hex": "#D4C5A9",
+        "name": "Cream"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80",
+    "isNew": true,
+    "category": "tables",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 12,
+    "name": "LOFTY",
+    "price": 420,
+    "colors": [
+      {
+        "hex": "#2C3E6B",
+        "name": "Navy"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80",
+    "isNew": false,
+    "category": "chairs",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 13,
+    "name": "FLOAT",
+    "price": 380,
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black"
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=900&q=80",
+    "isNew": true,
+    "category": "chairs",
+    "description": "I'm a product description. I'm a great place to add more details about your product such as sizing, material, care instructions and cleaning instructions."
+  },
+  {
+    "id": 14,
+    "name": "SPIDY SOFA",
+    "price": 500,
+    "colors": [
+      {
+        "hex": "#9E9E9E",
+        "name": "Gray"
+      },
+      {
+        "hex": "#000000",
+        "name": ""
+      },
+      {
+        "hex": "#2cba7c",
+        "name": ""
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "isNew": true,
+    "category": "sofas",
+    "description": "Hey Spidy !! You have done an awesome work."
+  }
+]
