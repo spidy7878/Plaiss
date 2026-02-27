@@ -3,168 +3,12 @@
 import { useRef, useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { ChevronDown, Minus, Plus, X, SlidersHorizontal } from 'lucide-react'
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-type Product = {
-  id: number
-  name: string
-  price: number
-  colors: { hex: string; name: string }[]
-  image: string
-  isNew: boolean
-  category: string
-}
+import type { Product, Category } from '@/lib/product-types'
+import { toSlug } from '@/lib/product-types'
 
 type SortOption = 'recommended' | 'price-low-high' | 'price-high-low' | 'newest'
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-const ALL_PRODUCTS: Product[] = [
-  {
-    id: 1,
-    name: 'SOLSTI',
-    price: 1200,
-    colors: [{ hex: '#D4C5A9', name: 'Cream' }],
-    image:
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80',
-    isNew: false,
-    category: 'sofas',
-  },
-  {
-    id: 2,
-    name: 'PUFFER',
-    price: 1200,
-    colors: [{ hex: '#1a1a1a', name: 'Black' }],
-    image:
-      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80',
-    isNew: true,
-    category: 'sofas',
-  },
-  {
-    id: 3,
-    name: 'MELO',
-    price: 1000,
-    colors: [{ hex: '#9E9E9E', name: 'Gray' }],
-    image:
-      'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=900&q=80',
-    isNew: false,
-    category: 'sofas',
-  },
-  {
-    id: 4,
-    name: 'DRIFT',
-    price: 1100,
-    colors: [
-      { hex: '#D4C5A9', name: 'Cream' },
-      { hex: '#9E9E9E', name: 'Gray' },
-    ],
-    image:
-      'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=900&q=80',
-    isNew: true,
-    category: 'sofas',
-  },
-  {
-    id: 5,
-    name: 'AZURE',
-    price: 1150,
-    colors: [{ hex: '#2C3E6B', name: 'Navy' }],
-    image:
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=900&q=80',
-    isNew: false,
-    category: 'sofas',
-  },
-  {
-    id: 6,
-    name: 'HAVEN',
-    price: 1050,
-    colors: [{ hex: '#F5F5F0', name: 'White' }],
-    image:
-      'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=900&q=80',
-    isNew: false,
-    category: 'sofas',
-  },
-  // Lounge Chairs
-  {
-    id: 7,
-    name: 'ARCH',
-    price: 900,
-    colors: [{ hex: '#C4A092', name: 'Terracotta' }],
-    image:
-      'https://images.unsplash.com/photo-1517142089942-ba376ce32a2e?w=900&q=80',
-    isNew: true,
-    category: 'lounge-chairs',
-  },
-  {
-    id: 8,
-    name: 'NEST',
-    price: 850,
-    colors: [{ hex: '#F5F5F0', name: 'White' }],
-    image:
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80',
-    isNew: false,
-    category: 'lounge-chairs',
-  },
-  {
-    id: 9,
-    name: 'CURVE',
-    price: 950,
-    colors: [{ hex: '#1a1a1a', name: 'Black' }],
-    image:
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=900&q=80',
-    isNew: false,
-    category: 'lounge-chairs',
-  },
-  // Tables
-  {
-    id: 10,
-    name: 'SLATE',
-    price: 750,
-    colors: [{ hex: '#9E9E9E', name: 'Gray' }],
-    image:
-      'https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=900&q=80',
-    isNew: false,
-    category: 'tables',
-  },
-  {
-    id: 11,
-    name: 'PINE',
-    price: 680,
-    colors: [{ hex: '#D4C5A9', name: 'Cream' }],
-    image:
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80',
-    isNew: true,
-    category: 'tables',
-  },
-  // Chairs
-  {
-    id: 12,
-    name: 'LOFTY',
-    price: 420,
-    colors: [{ hex: '#2C3E6B', name: 'Navy' }],
-    image:
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80',
-    isNew: false,
-    category: 'chairs',
-  },
-  {
-    id: 13,
-    name: 'FLOAT',
-    price: 380,
-    colors: [{ hex: '#1a1a1a', name: 'Black' }],
-    image:
-      'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=900&q=80',
-    isNew: true,
-    category: 'chairs',
-  },
-]
-
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-const BROWSE_CATEGORIES = [
-  { label: 'All Products', slug: 'all-products' },
-  { label: 'Sofas', slug: 'sofas' },
-  { label: 'Lounge Chairs', slug: 'lounge-chairs' },
-  { label: 'Tables', slug: 'tables' },
-  { label: 'Chairs', slug: 'chairs' },
-]
 
 const SORT_LABELS: Record<SortOption, string> = {
   recommended: 'Recommended',
@@ -240,8 +84,12 @@ function DualRangeSlider({
 
 // ─── Product Card ─────────────────────────────────────────────────────────────
 function ProductCard({ product }: { product: Product }) {
+  const href = `/${product.category}/${toSlug(product.name)}`
   return (
-    <div className="flex flex-col bg-white group cursor-pointer">
+    <Link
+      href={href}
+      className="flex flex-col bg-white border border-black group cursor-pointer"
+    >
       {/* Image */}
       <div className="relative w-full aspect-4/4.5 bg-[#f0eeeb] overflow-hidden">
         {product.isNew && (
@@ -275,18 +123,26 @@ function ProductCard({ product }: { product: Product }) {
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export function CategoryClient({ category }: { category: string }) {
+export function CategoryClient({
+  category,
+  products: allProducts,
+  categories: BROWSE_CATEGORIES,
+}: {
+  category: string
+  products: Product[]
+  categories: Category[]
+}) {
   const categoryProducts = useMemo(
     () =>
       category === 'all-products'
-        ? ALL_PRODUCTS
-        : ALL_PRODUCTS.filter((p) => p.category === category),
-    [category]
+        ? allProducts
+        : allProducts.filter((p) => p.category === category),
+    [category, allProducts]
   )
 
   // Price bounds for this category
@@ -310,11 +166,18 @@ export function CategoryClient({ category }: { category: string }) {
   const [sortOpen, setSortOpen] = useState(false)
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
   const sortRef = useRef<HTMLDivElement>(null)
+  const mobileSortRef = useRef<HTMLDivElement>(null)
 
   // Close sort dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
+      const target = e.target as Node
+      if (
+        sortRef.current &&
+        !sortRef.current.contains(target) &&
+        mobileSortRef.current &&
+        !mobileSortRef.current.contains(target)
+      ) {
         setSortOpen(false)
       }
     }
@@ -394,7 +257,7 @@ export function CategoryClient({ category }: { category: string }) {
             <span className="ml-1 w-2 h-2 rounded-full bg-black inline-block" />
           )}
         </button>
-        <div ref={sortRef} className="relative">
+        <div ref={mobileSortRef} className="relative">
           <button
             onClick={() => setSortOpen((v) => !v)}
             className="flex items-center gap-1.5 text-sm text-black"
@@ -687,9 +550,7 @@ export function CategoryClient({ category }: { category: string }) {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
               {filtered.map((product) => (
-                <div key={product.id} className="bg-white border border-black">
-                  <ProductCard product={product} />
-                </div>
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
           )}

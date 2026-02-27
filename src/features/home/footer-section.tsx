@@ -102,7 +102,7 @@ export function FooterSection() {
         </div>
 
         {/* Bottom Row */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between w-full mt-10 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between w-full mt-10 gap-8 relative">
           {/* Newsletter */}
           <div className="flex flex-col gap-3 max-w-sm">
             <div className="mt-1">
@@ -179,7 +179,7 @@ export function FooterSection() {
           {/* Scroll to top */}
           <button
             onClick={scrollToTop}
-            className="w-12 h-12 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/10 transition-colors mb-1"
+            className="w-12 h-12 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white/10 transition-colors mb-1 self-end md:self-auto"
             aria-label="Scroll to top"
           >
             <svg
