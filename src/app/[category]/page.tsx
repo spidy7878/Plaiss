@@ -1,18 +1,15 @@
-import { Header } from '@/components/header'
-import { FooterSection } from '@/features/home/footer-section'
-import { CategoryClient } from '@/features/category/category-client'
-
-export default async function CategoryPage({
-  params,
-}: {
+type Props = {
   params: Promise<{ category: string }>
-}) {
+}
+
+export default async function CategoryPage({ params }: Props) {
   const { category } = await params
+
   return (
-    <main className="min-h-screen bg-white font-sans">
-      <Header />
-      <CategoryClient key={category} category={category} />
-      <FooterSection />
+    <main className="min-h-screen pt-24 px-6 md:px-12">
+      <h1 className="text-3xl font-bold capitalize">
+        {category.replace(/-/g, ' ')}
+      </h1>
     </main>
   )
 }
