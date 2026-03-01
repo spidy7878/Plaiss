@@ -1,23 +1,25 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
-const NAV_ITEMS = [
-  {
-    label: 'Study room',
-    href: '#',
-    sub: [
-      { label: 'Lounge Chairs', href: '/lounge-chairs' },
-      { label: 'Chairs', href: '/chairs' },
-      { label: 'Tables', href: '/tables' },
-      { label: 'Contact', href: '#contact' },
-    ],
-  },
-  { label: 'Dining', href: '/dining', sub: [] },
-  { label: 'Bedroom', href: '/bedroom', sub: [] },
-  { label: 'Living Room', href: '/living-room', sub: [] },
-  { label: 'Planters', href: '/planters', sub: [] },
+type NavSubItem = { label: string; href: string }
+type NavItem = { label: string; href: string; sub: NavSubItem[] }
+
+const NAV_ITEMS: NavItem[] = [
+  { label: 'Furniture', href: '/furniture', sub: [] },
+  { label: 'Outdoor', href: '/outdoor', sub: [] },
+  { label: 'Lighting', href: '/lighting', sub: [] },
+  { label: 'Decor', href: '/decor', sub: [] },
+  { label: 'Textiles & Bedding', href: '/textiles-bedding', sub: [] },
+  { label: 'Rugs', href: '/rugs', sub: [] },
+  { label: 'Kitchen', href: '/kitchen', sub: [] },
+  { label: 'Storage', href: '/storage', sub: [] },
+  { label: 'Baby & Kids', href: '/baby-kids', sub: [] },
+  { label: 'Home Improvement', href: '/home-improvement', sub: [] },
+  { label: 'Pet', href: '/pet', sub: [] },
+  { label: 'Holiday', href: '/holiday', sub: [] },
+  { label: 'Shop by Room', href: '/shop-by-room', sub: [] },
 ]
 
 export function Header() {
@@ -26,6 +28,44 @@ export function Header() {
   )
   const [hovered, setHovered] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
+  const isDragging = useRef(false)
+  const startX = useRef(0)
+  const scrollLeft = useRef(0)
+
+  // Drag-to-scroll handlers
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    isDragging.current = true
+    startX.current = e.pageX - (navRef.current?.offsetLeft ?? 0)
+    scrollLeft.current = navRef.current?.scrollLeft ?? 0
+    if (navRef.current) navRef.current.style.cursor = 'grabbing'
+  }, [])
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging.current || !navRef.current) return
+    e.preventDefault()
+    const x = e.pageX - navRef.current.offsetLeft
+    const walk = (x - startX.current) * 1.5
+    navRef.current.scrollLeft = scrollLeft.current - walk
+  }, [])
+
+  const onMouseUpOrLeave = useCallback(() => {
+    isDragging.current = false
+    if (navRef.current) navRef.current.style.cursor = 'grab'
+  }, [])
+
+  // Convert vertical wheel scroll to horizontal scroll on the nav
+  useEffect(() => {
+    const nav = navRef.current
+    if (!nav) return
+    const handleWheel = (e: WheelEvent) => {
+      if (nav.scrollWidth <= nav.clientWidth) return
+      e.preventDefault()
+      nav.scrollLeft += e.deltaY || e.deltaX
+    }
+    nav.addEventListener('wheel', handleWheel, { passive: false })
+    return () => nav.removeEventListener('wheel', handleWheel)
+  }, [])
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -70,59 +110,79 @@ export function Header() {
         `}
       >
         {/* Logo */}
-        <div className="relative flex items-center">
-          <span className="text-4xl font-black font-(family-name:--font-montserrat) tracking-[-0.07em] uppercase leading-none text-black">
-            P
-          </span>
+        <div className="relative flex items-center shrink-0">
+          <img
+            src="images/logo3.png"
+            alt="Plaiss Logo"
+            className="h-10 w-auto object-contain"
+            style={{ maxHeight: '2.5rem' }}
+          />
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="relative flex-1 hidden lg:flex justify-center gap-12 text-sm font-normal text-black/90">
-          {NAV_ITEMS.map((item) => (
-            <div
-              key={item.label}
-              className="relative flex flex-col items-center"
-              onMouseEnter={() => setHovered(item.label)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <Link
-                href={item.href}
-                className={`relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full hover:text-black transition-colors px-2 py-1 ${
-                  hovered === item.label ? 'text-blue-600' : ''
-                }`}
+        <nav
+          ref={navRef}
+          className="relative flex-1 min-w-0 hidden lg:flex overflow-x-auto scrollbar-hide mx-8 xl:mx-12 cursor-grab select-none"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            maskImage:
+              'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)',
+            WebkitMaskImage:
+              'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)',
+          }}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUpOrLeave}
+          onMouseLeave={onMouseUpOrLeave}
+        >
+          <div className="flex items-center gap-5 xl:gap-7 text-sm font-normal text-black/90 whitespace-nowrap px-6">
+            {NAV_ITEMS.map((item) => (
+              <div
+                key={item.label}
+                className="relative flex flex-col items-center shrink-0"
+                onMouseEnter={() => setHovered(item.label)}
+                onMouseLeave={() => setHovered(null)}
               >
-                {item.label}
-              </Link>
-              {item.sub.length > 0 && hovered === item.label && (
-                <div className="absolute top-full left-0 pt-2 z-50">
-                  <div
-                    className={`min-w-95 w-105 grid grid-cols-2 gap-x-40 gap-y-4 py-4 pr-16 pl-6 rounded
+                <Link
+                  href={item.href}
+                  className={`relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full hover:text-black transition-colors px-2 py-1 whitespace-nowrap ${
+                    hovered === item.label ? 'text-blue-600' : ''
+                  }`}
+                >
+                  {item.label}
+                </Link>
+                {item.sub.length > 0 && hovered === item.label && (
+                  <div className="absolute top-full left-0 pt-2 z-50">
+                    <div
+                      className={`min-w-95 w-105 grid grid-cols-2 gap-x-40 gap-y-4 py-4 pr-16 pl-6 rounded
                       ${
                         navState === 'scrolling'
                           ? 'backdrop-blur-md bg-transparent border-none shadow-none'
                           : 'bg-white shadow-xl'
                       }
                     `}
-                  >
-                    {item.sub.map((sub) => (
-                      <Link
-                        key={sub.label}
-                        href={sub.href}
-                        className={`text-base whitespace-nowrap px-2 py-1 rounded transition-colors
+                    >
+                      {item.sub.map((sub) => (
+                        <Link
+                          key={sub.label}
+                          href={sub.href}
+                          className={`text-base whitespace-nowrap px-2 py-1 rounded transition-colors
                         ${navState === 'scrolling' ? 'text-black hover:bg-black/10' : 'text-black hover:bg-black/5'}`}
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            ))}
+          </div>
         </nav>
 
         {/* Right side: Shop + Hamburger */}
-        <div className="relative flex items-center gap-4">
+        <div className="relative flex items-center gap-4 shrink-0">
           <button className="bg-black text-white px-6 md:px-8 py-2.5 rounded-full text-sm font-semibold tracking-wide hover:bg-lime-300 hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg">
             Shop
           </button>
@@ -147,37 +207,58 @@ export function Header() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-white flex flex-col pt-24 px-8 pb-8 lg:hidden overflow-y-auto">
-          <nav className="flex flex-col gap-6">
-            {NAV_ITEMS.map((item) => (
-              <div key={item.label} className="flex flex-col gap-2">
-                <Link
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-normal text-black"
-                >
-                  {item.label}
-                </Link>
-                {item.sub.length > 0 && (
-                  <div className="flex flex-col gap-2 pl-4 border-l border-black/20">
-                    {item.sub.map((sub) => (
-                      <Link
-                        key={sub.label}
-                        href={sub.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="text-base text-black/60 hover:text-black transition-colors"
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
+      <div
+        className={`fixed inset-0 z-40 bg-white flex flex-col pt-20 px-6 sm:px-8 pb-8 lg:hidden overflow-y-auto transition-all duration-300 ease-in-out ${
+          mobileOpen
+            ? 'opacity-100 translate-x-0 pointer-events-auto'
+            : 'opacity-0 translate-x-full pointer-events-none'
+        }`}
+      >
+        {/* Close button */}
+        <button
+          className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center"
+          onClick={() => setMobileOpen(false)}
+          aria-label="Close menu"
+        >
+          <span className="block h-0.5 w-6 bg-black rotate-45 absolute" />
+          <span className="block h-0.5 w-6 bg-black -rotate-45 absolute" />
+        </button>
+
+        <nav className="flex flex-col gap-1 mt-4">
+          {NAV_ITEMS.map((item) => (
+            <div key={item.label} className="flex flex-col">
+              <Link
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-sm font-normal text-black/90 hover:text-black px-3 py-3 border-b border-black/5 transition-colors"
+              >
+                {item.label}
+              </Link>
+              {item.sub.length > 0 && (
+                <div className="flex flex-col pl-6 bg-black/[0.02]">
+                  {item.sub.map((sub) => (
+                    <Link
+                      key={sub.label}
+                      href={sub.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-sm font-normal text-black/60 hover:text-black px-3 py-2.5 border-b border-black/5 transition-colors"
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </nav>
+
+        {/* Mobile Shop button */}
+        <div className="mt-8 px-3">
+          <button className="w-full bg-black text-white py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-lime-300 hover:text-black transition-all duration-200">
+            Shop
+          </button>
         </div>
-      )}
+      </div>
     </>
   )
 }
