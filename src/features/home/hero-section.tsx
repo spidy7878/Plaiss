@@ -9,13 +9,28 @@ export function HeroSection() {
       }}
     >
       <div className="absolute inset-0 bg-black/10" />
-      <div className="relative z-10 flex flex-col items-center justify-center py-12 text-center">
-        <h1 className="text-white text-[3.5rem] sm:text-[6rem] md:text-[9rem] lg:text-[14rem] font-(family-name:--font-montserrat) font-black tracking-[-0.07em] leading-none mb-0 drop-shadow-2xl">
-          Plaiss
-        </h1>
-        <p className="text-white text-sm sm:text-base md:text-2xl font-regular tracking-wider mt-2 px-4 py-4">
-          UNIQUE DESIGNS FOR DISTINCTIVE SPACES
-        </p>
+      <div
+        className="relative z-10 flex items-center justify-center text-center w-full h-full"
+        style={{ minHeight: '14rem' }}
+      >
+        <img
+          src="images/title.svg"
+          alt="Plaiss Logo"
+          className="block w-full max-w-[92vw] h-auto drop-shadow-2xl select-none pointer-events-none"
+          style={{
+            maxHeight: '36rem',
+            minHeight: '14rem',
+            objectFit: 'contain',
+          }}
+        />
+        <div
+          className="absolute left-0 w-full flex items-center justify-center pointer-events-none"
+          style={{ top: '75%', transform: 'translateY(-50%)' }}
+        >
+          <p className="text-white text-sm sm:text-base md:text-2xl font-regular tracking-wider px-4rounded-lg">
+            UNIQUE DESIGNS FOR DISTINCTIVE SPACES
+          </p>
+        </div>
       </div>
     </section>
   )
