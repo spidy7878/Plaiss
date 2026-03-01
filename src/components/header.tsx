@@ -1,13 +1,23 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 
 type NavSubItem = { label: string; href: string }
 type NavItem = { label: string; href: string; sub: NavSubItem[] }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Furniture', href: '/furniture', sub: [] },
+  {
+    label: 'Furniture',
+    href: '/furniture',
+    sub: [
+      { label: 'Lounge Chairs', href: '/lounge-chairs' },
+      { label: 'Chairs', href: '/chairs' },
+      { label: 'Tables', href: '/tables' },
+      { label: 'Contact', href: '#contact' },
+    ],
+  },
   { label: 'Outdoor', href: '/outdoor', sub: [] },
   { label: 'Lighting', href: '/lighting', sub: [] },
   { label: 'Decor', href: '/decor', sub: [] },
@@ -27,11 +37,14 @@ export function Header() {
     'top'
   )
   const [hovered, setHovered] = useState<string | null>(null)
+  const [dropdownRect, setDropdownRect] = useState<DOMRect | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const navRef = useRef<HTMLElement>(null)
+  const navRef = useRef<HTMLDivElement>(null)
   const isDragging = useRef(false)
   const startX = useRef(0)
   const scrollLeft = useRef(0)
+  // Dropdown close timer
+  const closeDropdownTimer = useRef<NodeJS.Timeout | null>(null)
 
   // Drag-to-scroll handlers
   const onMouseDown = useCallback((e: React.MouseEvent) => {
@@ -120,66 +133,105 @@ export function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav
-          ref={navRef}
-          className="relative flex-1 min-w-0 hidden lg:flex overflow-x-auto scrollbar-hide mx-8 xl:mx-12 cursor-grab select-none"
-          style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            maskImage:
-              'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)',
-            WebkitMaskImage:
-              'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)',
-          }}
-          onMouseDown={onMouseDown}
-          onMouseMove={onMouseMove}
-          onMouseUp={onMouseUpOrLeave}
-          onMouseLeave={onMouseUpOrLeave}
-        >
-          <div className="flex items-center gap-5 xl:gap-7 text-sm font-normal text-black/90 whitespace-nowrap px-6">
-            {NAV_ITEMS.map((item) => (
-              <div
-                key={item.label}
-                className="relative flex flex-col items-center shrink-0"
-                onMouseEnter={() => setHovered(item.label)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                <Link
-                  href={item.href}
-                  className={`relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full hover:text-black transition-colors px-2 py-1 whitespace-nowrap ${
-                    hovered === item.label ? 'text-blue-600' : ''
-                  }`}
+        <nav className="relative flex-1 min-w-0 hidden lg:flex mx-8 xl:mx-12">
+          <div
+            ref={navRef}
+            className="flex-1 overflow-x-auto scrollbar-hide cursor-grab select-none"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              maskImage:
+                'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)',
+              WebkitMaskImage:
+                'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)',
+            }}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUpOrLeave}
+            onMouseLeave={onMouseUpOrLeave}
+          >
+            <div className="flex items-center gap-5 xl:gap-7 text-sm font-normal text-black/90 whitespace-nowrap px-6">
+              {NAV_ITEMS.map((item) => (
+                <div
+                  key={item.label}
+                  className="relative flex flex-col items-center shrink-0"
+                  onMouseEnter={(e) => {
+                    if (closeDropdownTimer.current) {
+                      clearTimeout(closeDropdownTimer.current)
+                    }
+                    setHovered(item.label)
+                    if (item.sub.length > 0) {
+                      setDropdownRect(
+                        (e.currentTarget as HTMLElement).getBoundingClientRect()
+                      )
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    // Delay closing to allow mouse to enter dropdown
+                    closeDropdownTimer.current = setTimeout(() => {
+                      setHovered(null)
+                      setDropdownRect(null)
+                    }, 120)
+                  }}
                 >
-                  {item.label}
-                </Link>
-                {item.sub.length > 0 && hovered === item.label && (
-                  <div className="absolute top-full left-0 pt-2 z-50">
-                    <div
-                      className={`min-w-95 w-105 grid grid-cols-2 gap-x-40 gap-y-4 py-4 pr-16 pl-6 rounded
-                      ${
-                        navState === 'scrolling'
-                          ? 'backdrop-blur-md bg-transparent border-none shadow-none'
-                          : 'bg-white shadow-xl'
-                      }
-                    `}
-                    >
-                      {item.sub.map((sub) => (
-                        <Link
-                          key={sub.label}
-                          href={sub.href}
-                          className={`text-base whitespace-nowrap px-2 py-1 rounded transition-colors
-                        ${navState === 'scrolling' ? 'text-black hover:bg-black/10' : 'text-black hover:bg-black/5'}`}
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  <Link
+                    href={item.href}
+                    className={`relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full hover:text-black transition-colors px-2 py-1 whitespace-nowrap ${
+                      hovered === item.label ? 'text-blue-600' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </nav>
+
+        {/* Dropdown Portal – rendered outside the overflow container */}
+        {hovered &&
+          dropdownRect &&
+          (() => {
+            const activeItem = NAV_ITEMS.find((i) => i.label === hovered)
+            if (!activeItem || activeItem.sub.length === 0) return null
+            return createPortal(
+              <div
+                className="fixed z-9999"
+                style={{
+                  top: dropdownRect.bottom + 8,
+                  left: dropdownRect.left,
+                }}
+                onMouseEnter={() => {
+                  if (closeDropdownTimer.current) {
+                    clearTimeout(closeDropdownTimer.current)
+                  }
+                }}
+                onMouseLeave={() => {
+                  closeDropdownTimer.current = setTimeout(() => {
+                    setHovered(null)
+                    setDropdownRect(null)
+                  }, 120)
+                }}
+              >
+                <div
+                  className={`min-w-56 grid grid-cols-1 gap-y-1 py-3 px-2 rounded-xl ${
+                    navState === 'scrolling' ? 'backdrop-blur-md' : 'bg-white'
+                  }`}
+                >
+                  {activeItem.sub.map((sub) => (
+                    <Link
+                      key={sub.label}
+                      href={sub.href}
+                      className="text-sm text-black/80 hover:text-black  px-3 py-2 rounded-lg transition-colors whitespace-nowrap"
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>,
+              document.body
+            )
+          })()}
 
         {/* Right side: Shop + Hamburger */}
         <div className="relative flex items-center gap-4 shrink-0">
@@ -235,7 +287,7 @@ export function Header() {
                 {item.label}
               </Link>
               {item.sub.length > 0 && (
-                <div className="flex flex-col pl-6 bg-black/[0.02]">
+                <div className="flex flex-col pl-6 bg-black/2">
                   {item.sub.map((sub) => (
                     <Link
                       key={sub.label}
