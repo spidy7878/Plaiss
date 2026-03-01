@@ -1,13 +1,15 @@
 export function HeroSection() {
   return (
-    <section
-      className="relative flex flex-col items-center justify-center min-h-[60vh] sm:min-h-[75vh] md:min-h-[82vh] mt-20 lg:mt-27 mx-auto w-[92vw] rounded-2xl overflow-hidden"
-      style={{
-        backgroundImage: 'url(/home.avif)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-      }}
-    >
+    <section className="relative flex flex-col items-center justify-center min-h-[60vh] sm:min-h-[75vh] md:min-h-[82vh] mt-20 lg:mt-27 mx-auto w-[92vw] rounded-2xl overflow-hidden">
+      {/* Video background (keeps same sizing/cover behavior as previous background image) */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="videos/home_video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
       <div className="absolute inset-0 bg-black/10" />
       <div
         className="relative z-10 flex items-center justify-center text-center w-full h-full"

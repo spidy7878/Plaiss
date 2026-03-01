@@ -89,6 +89,16 @@ export function FooterSection() {
                 Accessibility statement
               </li>
               <li className="hover:underline cursor-pointer">FAQ</li>
+              <li className="hover:underline cursor-pointer">
+                <Link href="/about" className="hover:underline">
+                  About Us
+                </Link>
+              </li>
+              <li className="hover:underline cursor-pointer">
+                <Link href="/blog" className="hover:underline">
+                  Blog
+                </Link>
+              </li>
             </ul>
 
             {/* Social Links */}
