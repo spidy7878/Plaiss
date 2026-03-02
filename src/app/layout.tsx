@@ -17,6 +17,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'Plaiss - Unique Designs',
   description: 'Furniture for distinctive spaces',
+  icons: {
+    icon: '/images/logo3.png',
+  },
 }
 
 export default function RootLayout({

@@ -4,7 +4,6 @@ import { CategoriesSection } from '@/features/home/categories-section'
 import { GetItAllSection } from '@/features/home/get-it-all-section'
 import { EngineSection } from '@/features/home/engine-section'
 import { PartnersSection } from '@/features/home/partners-section'
-import { TestimonialsSection } from '@/features/home/testimonials-section'
 import { FollowUsSection } from '@/features/home/follow-us-section'
 import { FooterSection } from '@/features/home/footer-section'
 
@@ -17,7 +16,6 @@ export default function Home() {
       <GetItAllSection />
       <EngineSection />
       <PartnersSection />
-      <TestimonialsSection />
       <FollowUsSection />
       <FooterSection />
     </main>
