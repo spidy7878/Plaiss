@@ -1,12 +1,12 @@
 const CATEGORIES = [
-  'Wardrobe',
-  'Tools',
-  'Beds',
-  'Plants',
-  'Kitchen',
-  'Outdoor',
-  'Lighting',
-  'Decor',
+  { label: 'Wardrobe', image: '/images/7.png' },
+  { label: 'Tools', image: '/images/8.png' },
+  { label: 'Beds', image: '/images/6.png' },
+  { label: 'Plants', image: '/images/10.avif' },
+  { label: 'Chairs', image: '/images/3.png' },
+  { label: 'Dining', image: '/images/11.avif' },
+  { label: 'Couches', image: '/images/4.png' },
+  { label: 'TV Top', image: '/images/9.png' },
 ]
 
 export function GetItAllSection() {
@@ -24,12 +24,14 @@ export function GetItAllSection() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4 sm:gap-8 sm:px-8 md:gap-12 md:px-12 max-w-7xl mx-auto">
         {CATEGORIES.map((category) => (
-          <div key={category} className="flex flex-col items-center">
-            <h3 className="text-xl font-light text-black mb-8">{category}</h3>
+          <div key={category.label} className="flex flex-col items-center">
+            <h3 className="text-xl font-light text-black mb-8">
+              {category.label}
+            </h3>
             <div className="w-full aspect-square bg-white/50 rounded-lg overflow-hidden">
               <img
-                src="/106.avif"
-                alt={category}
+                src={category.image}
+                alt={category.label}
                 className="w-full h-full object-cover"
               />
             </div>
