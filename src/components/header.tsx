@@ -878,6 +878,10 @@ export function Header() {
   const [navState, setNavState] = useState<'top' | 'scrolling' | 'hidden'>(
     'top'
   )
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
+  // For SSR/Next.js, use next/navigation
+  // import { usePathname } from 'next/navigation'
+  // const pathname = usePathname()
   const [hovered, setHovered] = useState<string | null>(null)
   const headerRef = useRef<HTMLElement>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -984,12 +988,23 @@ export function Header() {
       >
         {/* Logo */}
         <div className="relative flex items-center shrink-0">
-          <img
-            src="images/logo3.png"
-            alt="Plaiss Logo"
-            className="h-10 w-auto object-contain"
-            style={{ maxHeight: '2.5rem' }}
-          />
+          {pathname === '/' ? (
+            <img
+              src="/images/logo3.png"
+              alt="Plaiss Logo"
+              className="h-10 w-auto object-contain"
+              style={{ maxHeight: '2.5rem' }}
+            />
+          ) : (
+            <Link href="/">
+              <img
+                src="/images/logo3.png"
+                alt="Plaiss Logo"
+                className="h-10 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+                style={{ maxHeight: '2.5rem' }}
+              />
+            </Link>
+          )}
         </div>
 
         {/* Desktop Navigation */}

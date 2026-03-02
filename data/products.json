@@ -220,5 +220,177 @@
     "isNew": true,
     "category": "sofas",
     "description": "Hey Spidy !! You have done an awesome work."
+  },
+  {
+    "id": 15,
+    "name": "NORDIC SHELF",
+    "price": 890,
+    "colors": [
+      { "hex": "#D4C5A9", "name": "Oak" },
+      { "hex": "#1a1a1a", "name": "Black" }
+    ],
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80",
+    "isNew": true,
+    "category": "furniture",
+    "description": "A sleek Scandinavian-inspired shelf that blends minimalist design with practical storage. Perfect for any living space."
+  },
+  {
+    "id": 16,
+    "name": "EDEN LOUNGER",
+    "price": 1350,
+    "colors": [
+      { "hex": "#5A7A5A", "name": "Sage" },
+      { "hex": "#C4A092", "name": "Terracotta" }
+    ],
+    "image": "https://images.unsplash.com/photo-1600210491892-03d54078ff59?w=900&q=80",
+    "isNew": true,
+    "category": "outdoor",
+    "description": "Weather-resistant outdoor lounger with premium cushions. Designed to transform your patio or garden into a relaxing retreat."
+  },
+  {
+    "id": 17,
+    "name": "LUMINA PENDANT",
+    "price": 420,
+    "colors": [
+      { "hex": "#C0A060", "name": "Brass" },
+      { "hex": "#F5F5F0", "name": "White" }
+    ],
+    "image": "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=900&q=80",
+    "isNew": false,
+    "category": "lighting",
+    "description": "A statement pendant light with warm brass finish. Adds a touch of elegance to dining rooms, kitchens, and entryways."
+  },
+  {
+    "id": 18,
+    "name": "AURA MIRROR",
+    "price": 310,
+    "colors": [
+      { "hex": "#C0A060", "name": "Gold" },
+      { "hex": "#9E9E9E", "name": "Silver" }
+    ],
+    "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80",
+    "isNew": false,
+    "category": "decor",
+    "description": "A stunning arched wall mirror with a hand-finished metal frame. Instantly elevates any room's aesthetic."
+  },
+  {
+    "id": 19,
+    "name": "CLOUD DUVET SET",
+    "price": 185,
+    "colors": [
+      { "hex": "#F5F5F0", "name": "White" },
+      { "hex": "#D4C5A9", "name": "Linen" },
+      { "hex": "#9E9E9E", "name": "Gray" }
+    ],
+    "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=900&q=80",
+    "isNew": true,
+    "category": "textiles-bedding",
+    "description": "Ultra-soft 400-thread-count cotton duvet cover set. Breathable, hypoallergenic, and available in three neutral tones."
+  },
+  {
+    "id": 20,
+    "name": "TERRA RUG",
+    "price": 275,
+    "colors": [
+      { "hex": "#C4A092", "name": "Rust" },
+      { "hex": "#D4C5A9", "name": "Sand" }
+    ],
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80",
+    "isNew": false,
+    "category": "rugs",
+    "description": "Hand-tufted wool area rug with a warm terracotta palette. Adds texture and warmth to living rooms and bedrooms."
+  },
+  {
+    "id": 21,
+    "name": "PREP KITCHEN ISLAND",
+    "price": 640,
+    "colors": [
+      { "hex": "#D4C5A9", "name": "Maple" },
+      { "hex": "#1a1a1a", "name": "Matte Black" }
+    ],
+    "image": "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=900&q=80",
+    "isNew": true,
+    "category": "kitchen",
+    "description": "A compact yet spacious kitchen island with two shelves and integrated towel rail. Perfect for small to mid-size kitchens."
+  },
+  {
+    "id": 22,
+    "name": "STACK BOOKCASE",
+    "price": 490,
+    "colors": [
+      { "hex": "#D4C5A9", "name": "Oak" },
+      { "hex": "#F5F5F0", "name": "White" }
+    ],
+    "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=900&q=80",
+    "isNew": false,
+    "category": "storage",
+    "description": "A modular open-shelf bookcase that adapts to your space. Five adjustable shelves and a sturdy MDF frame."
+  },
+  {
+    "id": 23,
+    "name": "DREAMY KIDS BED",
+    "price": 720,
+    "colors": [
+      { "hex": "#F5F5F0", "name": "White" },
+      { "hex": "#2C9ED4", "name": "Blue" },
+      { "hex": "#FF8FAB", "name": "Pink" }
+    ],
+    "image": "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=900&q=80",
+    "isNew": true,
+    "category": "baby-kids",
+    "description": "A whimsical house-shaped kids bed with built-in guardrails and solid pine frame. Sparks imagination every night."
+  },
+  {
+    "id": 24,
+    "name": "PLANK FLOOR TILE",
+    "price": 95,
+    "colors": [
+      { "hex": "#D4C5A9", "name": "Light Oak" },
+      { "hex": "#8B6914", "name": "Walnut" },
+      { "hex": "#9E9E9E", "name": "Ash Gray" }
+    ],
+    "image": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=900&q=80",
+    "isNew": false,
+    "category": "home-improvement",
+    "description": "Premium vinyl plank flooring with realistic wood grain finish. Waterproof, scratch-resistant, and easy click-lock installation."
+  },
+  {
+    "id": 25,
+    "name": "COZY PET BED",
+    "price": 120,
+    "colors": [
+      { "hex": "#D4C5A9", "name": "Beige" },
+      { "hex": "#9E9E9E", "name": "Gray" }
+    ],
+    "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=900&q=80",
+    "isNew": false,
+    "category": "pet",
+    "description": "An orthopedic memory foam pet bed with a removable, machine-washable cover. Keeps your furry friend comfortable all day."
+  },
+  {
+    "id": 26,
+    "name": "FESTIVE TREE SET",
+    "price": 155,
+    "colors": [
+      { "hex": "#2C6B3A", "name": "Forest Green" },
+      { "hex": "#F5F5F0", "name": "Snow White" }
+    ],
+    "image": "https://images.unsplash.com/photo-1544894079-e81a9eb7d791?w=900&q=80",
+    "isNew": true,
+    "category": "holiday",
+    "description": "A lush 6ft pre-lit artificial Christmas tree with 200 warm LED lights and 1000 branch tips. Unbox, fluff, and celebrate."
+  },
+  {
+    "id": 27,
+    "name": "LIVING ROOM BUNDLE",
+    "price": 2400,
+    "colors": [
+      { "hex": "#D4C5A9", "name": "Natural" },
+      { "hex": "#1a1a1a", "name": "Charcoal" }
+    ],
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80",
+    "isNew": true,
+    "category": "shop-by-room",
+    "description": "A curated living room bundle including a 3-seater sofa, coffee table, floor lamp, and area rug. Everything you need, perfectly matched."
   }
 ]

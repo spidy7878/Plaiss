@@ -307,13 +307,10 @@ export function ProductDetailClient({
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 mb-8">
-              <button className="flex-1 min-w-[120px] bg-[#d4f000] text-black text-sm font-semibold py-3.5 px-6 rounded-full hover:opacity-90 transition-opacity">
-                Add to Cart
-              </button>
-              <button className="flex-1 min-w-[120px] border border-black text-black text-sm font-semibold py-3.5 px-6 rounded-full hover:bg-black hover:text-white transition-colors">
-                Buy Now
+            {/* CTA Button and Like - Centered Row */}
+            <div className="flex justify-center items-center gap-4 mb-8">
+              <button className="bg-black text-white px-6 md:px-8 py-2.5 rounded-full text-sm font-semibold tracking-wide hover:bg-lime-300 hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg">
+                Go To Seller&apos;s Site
               </button>
               <button
                 onClick={() => setWishlisted((v) => !v)}
