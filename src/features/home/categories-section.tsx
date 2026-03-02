@@ -33,7 +33,7 @@ export function CategoriesSection() {
         href="/planters"
         className="relative min-h-105 flex flex-col justify-between pt-8 pl-8 pb-12 pr-12 bg-[#f8f6f3] md:border-r border-black"
       >
-        <h2 className="text-2xl font-light text-black z-10">All Planters</h2>
+        <h2 className="text-2xl font-light text-black z-10">All Plants</h2>
         <div className="absolute inset-0">
           <img
             src="/106.avif"
