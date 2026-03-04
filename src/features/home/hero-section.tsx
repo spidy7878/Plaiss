@@ -4,7 +4,7 @@ export function HeroSection() {
       {/* Video background (keeps same sizing/cover behavior as previous background image) */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="videos/home_video.mp4"
+        src="videos/home_video1.mp4"
         autoPlay
         muted
         loop
