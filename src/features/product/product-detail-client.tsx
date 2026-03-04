@@ -207,7 +207,7 @@ export function ProductDetailClient({
   return (
     <>
       {/* ── Breadcrumb ── */}
-      <div className="w-full max-w-350 mx-auto px-4 sm:px-6 md:px-12 py-4 flex items-center gap-1.5 text-xs text-black/50">
+      <div className="w-full max-w-350 mx-auto px-4 sm:px-6 md:px-12 py-20 flex items-center gap-1.5 text-xs text-black/50">
         <Link href="/" className="hover:text-black transition-colors">
           Home
         </Link>
@@ -223,7 +223,7 @@ export function ProductDetailClient({
       </div>
 
       {/* ── Product section ── */}
-      <section className="w-full max-w-350 mx-auto px-4 sm:px-6 md:px-12 py-6 md:py-10">
+      <section className="w-full max-w-350 mx-auto px-4 sm:px-6 md:px-12 pt-0 pb-6 md:pt-0 md:pb-10">
         <div className="flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-20">
           {/* Left – Image */}
           <div className="w-full md:w-[55%] flex flex-col gap-3">
