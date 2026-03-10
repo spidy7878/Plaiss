@@ -101,7 +101,7 @@ function RelatedProductCard({ product }: { product: Product }) {
           {product.name}
         </p>
         <p className="text-sm text-black/60">
-          ₹{product.price.toLocaleString('en-IN')}.00
+          £{product.price.toLocaleString('en-GB')}.00
         </p>
       </div>
     </Link>
@@ -255,7 +255,7 @@ export function ProductDetailClient({
 
             {/* Price */}
             <p className="text-lg text-black mb-5">
-              ₹{product.price.toLocaleString('en-IN')}.00
+              £{product.price.toLocaleString('en-GB')}.00
             </p>
 
             {/* Description */}
@@ -345,7 +345,7 @@ export function ProductDetailClient({
               </AccordionItem>
               <AccordionItem title="Shipping Info">
                 <p>
-                  Free standard shipping on orders over ₹5,000. Express delivery
+                  Free standard shipping on orders over £5,000. Express delivery
                   available at checkout. Estimated delivery: 5–7 business days.
                 </p>
               </AccordionItem>

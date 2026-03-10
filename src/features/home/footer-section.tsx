@@ -175,15 +175,15 @@ export function FooterSection() {
 
           {/* Contact */}
           <div className="flex flex-col gap-2 text-white text-sm font-light mb-1">
-            <p className="text-xl font-normal mb-1">Contact</p>
-            <p>Info@mysite.com</p>
-            <p>Tel: 123-456-7890</p>
+            <p className="text-xl font-normal mb-1">Address</p>
+            {/* <p>contact@plaiss.com</p> */}
             <p>
-              500 Terry Francine St
+              124 City Road
               <br />
-              San Francisco, CA 94158
+              London, EC1V 2NX
+              <br />
+              United Kingdom
             </p>
-            <p>Monday-Friday 9:00am – 7:00pm EST</p>
           </div>
 
           {/* Scroll to top */}
@@ -206,6 +206,11 @@ export function FooterSection() {
               <path d="M12 19V5M5 12l7-7 7 7" />
             </svg>
           </button>
+        </div>
+
+        {/* Copyright */}
+        <div className="relative z-10 mt-8 pt-4 border-t border-white/20 text-white/50 text-xs text-center">
+          © {new Date().getFullYear()} Plaiss Ltd. All rights reserved.
         </div>
       </div>
     </footer>

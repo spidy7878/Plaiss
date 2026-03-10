@@ -246,6 +246,51 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
+    label: 'Plants',
+    href: '/plants/terra-fern',
+    sub: [
+      {
+        heading: 'Indoor Plants',
+        href: '/plants/terra-fern',
+        items: [
+          { label: 'Low Light Plants', href: '/plants/terra-fern' },
+          { label: 'Small Desk Plants', href: '/plants/lumi-cactus' },
+          { label: 'Large Statement Plants', href: '/plants/monstera-luxe' },
+          { label: 'Succulents & Cacti', href: '/plants/lumi-cactus' },
+          { label: 'Hanging Plants', href: '/plants/string-pearl' },
+        ],
+      },
+      {
+        heading: 'Pet Safe Plants',
+        href: '/plants/zz-shield',
+        items: [
+          { label: 'Non-Toxic Houseplants', href: '/plants/zz-shield' },
+          { label: 'Cat-Friendly Plants', href: '/plants/zz-shield' },
+          { label: 'Dog-Friendly Plants', href: '/plants/zz-shield' },
+        ],
+      },
+      {
+        heading: 'Planters & Pots',
+        href: '/plants/clay-planter',
+        items: [
+          { label: 'Ceramic Planters', href: '/plants/clay-planter' },
+          { label: 'Hanging Planters', href: '/plants/string-pearl' },
+          { label: 'Self-Watering Pots', href: '/plants/clay-planter' },
+          { label: 'Plant Stands', href: '/plants/monstera-luxe' },
+        ],
+      },
+      {
+        heading: 'Plant Care',
+        href: '/plants/terra-fern',
+        items: [
+          { label: 'Soil & Fertiliser', href: '/plants/terra-fern' },
+          { label: 'Watering Accessories', href: '/plants/terra-fern' },
+          { label: 'Grow Lights', href: '/plants/lumi-cactus' },
+        ],
+      },
+    ],
+  },
+  {
     label: 'Lighting',
     href: '/lighting/lumina-pendant',
     sub: [
@@ -577,61 +622,6 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label: 'Storage',
-    href: '/storage/stack-bookcase',
-    sub: [
-      {
-        heading: 'Storage Furniture',
-        href: '/storage/stack-bookcase',
-        items: [
-          { label: 'Bookcases & Shelving', href: '/storage/stack-bookcase' },
-          { label: 'Cabinets & Chests', href: '/storage/stack-bookcase' },
-          { label: 'Sideboards & Buffets', href: '/storage/stack-bookcase' },
-          { label: 'Media Storage', href: '/storage/stack-bookcase' },
-          {
-            label: 'Storage Furniture Sale',
-            href: '/storage/stack-bookcase',
-            isSale: true,
-          },
-        ],
-      },
-      {
-        heading: 'Closet Storage',
-        href: '/storage/stack-bookcase',
-        items: [
-          { label: 'Closet Systems', href: '/storage/stack-bookcase' },
-          {
-            label: 'Wardrobe Organisers',
-            href: '/storage/stack-bookcase',
-          },
-          { label: 'Shoe Storage', href: '/storage/stack-bookcase' },
-          { label: 'Hangers', href: '/storage/stack-bookcase' },
-        ],
-      },
-      {
-        heading: 'Bins & Baskets',
-        href: '/storage/stack-bookcase',
-        items: [
-          { label: 'Storage Boxes', href: '/storage/stack-bookcase' },
-          { label: 'Woven Baskets', href: '/storage/stack-bookcase' },
-          {
-            label: 'Trunk & Storage Ottomans',
-            href: '/storage/stack-bookcase',
-          },
-        ],
-      },
-      {
-        heading: 'Garage & Utility',
-        href: '/storage/stack-bookcase',
-        items: [
-          { label: 'Garage Shelving', href: '/storage/stack-bookcase' },
-          { label: 'Tool Storage', href: '/storage/stack-bookcase' },
-          { label: 'Wall Organisation', href: '/storage/stack-bookcase' },
-        ],
-      },
-    ],
-  },
-  {
     label: 'Baby & Kids',
     href: '/baby-kids/dreamy-kids-bed',
     sub: [
@@ -756,105 +746,6 @@ const NAV_ITEMS: NavItem[] = [
             href: '/home-improvement/plank-floor-tile',
           },
           { label: 'Countertops', href: '/home-improvement/plank-floor-tile' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Pet',
-    href: '/pet/cozy-pet-bed',
-    sub: [
-      {
-        heading: 'Pet Furniture',
-        href: '/pet/cozy-pet-bed',
-        items: [
-          { label: 'Pet Beds', href: '/pet/cozy-pet-bed' },
-          { label: 'Cat Trees', href: '/pet/cozy-pet-bed' },
-          { label: 'Pet Crates & Kennels', href: '/pet/cozy-pet-bed' },
-          { label: 'Pet Gates', href: '/pet/cozy-pet-bed' },
-          {
-            label: 'Pet Furniture Sale',
-            href: '/pet/cozy-pet-bed',
-            isSale: true,
-          },
-        ],
-      },
-      {
-        heading: 'Pet Feeding',
-        href: '/pet/cozy-pet-bed',
-        items: [
-          { label: 'Pet Bowls & Feeders', href: '/pet/cozy-pet-bed' },
-          { label: 'Pet Feeding Stations', href: '/pet/cozy-pet-bed' },
-          { label: 'Water Fountains', href: '/pet/cozy-pet-bed' },
-        ],
-      },
-      {
-        heading: 'Pet Accessories',
-        href: '/pet/cozy-pet-bed',
-        items: [
-          { label: 'Pet Toys', href: '/pet/cozy-pet-bed' },
-          { label: 'Pet Grooming', href: '/pet/cozy-pet-bed' },
-          { label: 'Pet Travel', href: '/pet/cozy-pet-bed' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Holiday',
-    href: '/holiday/festive-tree-set',
-    sub: [
-      {
-        heading: 'Christmas',
-        href: '/holiday/festive-tree-set',
-        items: [
-          { label: 'Christmas Trees', href: '/holiday/festive-tree-set' },
-          {
-            label: 'Christmas Decorations',
-            href: '/holiday/festive-tree-set',
-          },
-          { label: 'Christmas Lights', href: '/holiday/festive-tree-set' },
-          {
-            label: 'Christmas Stockings',
-            href: '/holiday/festive-tree-set',
-          },
-          {
-            label: 'Christmas Sale',
-            href: '/holiday/festive-tree-set',
-            isSale: true,
-          },
-        ],
-      },
-      {
-        heading: 'Halloween',
-        href: '/holiday/festive-tree-set',
-        items: [
-          {
-            label: 'Halloween Decorations',
-            href: '/holiday/festive-tree-set',
-          },
-          { label: 'Halloween Lighting', href: '/holiday/festive-tree-set' },
-          { label: 'Halloween Outdoor', href: '/holiday/festive-tree-set' },
-        ],
-      },
-      {
-        heading: 'Spring & Easter',
-        href: '/holiday/festive-tree-set',
-        items: [
-          { label: 'Easter Decor', href: '/holiday/festive-tree-set' },
-          { label: 'Spring Wreaths', href: '/holiday/festive-tree-set' },
-          { label: 'Spring Flowers', href: '/holiday/festive-tree-set' },
-        ],
-      },
-      {
-        heading: 'Seasonal Decor',
-        href: '/holiday/festive-tree-set',
-        items: [
-          { label: 'Wreaths & Garlands', href: '/holiday/festive-tree-set' },
-          { label: 'Seasonal Candles', href: '/holiday/festive-tree-set' },
-          {
-            label: 'Seasonal Throws & Pillows',
-            href: '/textiles-bedding/cloud-duvet-set',
-          },
         ],
       },
     ],

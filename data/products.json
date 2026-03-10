@@ -392,5 +392,81 @@
     "isNew": true,
     "category": "shop-by-room",
     "description": "A curated living room bundle including a 3-seater sofa, coffee table, floor lamp, and area rug. Everything you need, perfectly matched."
+  },
+  {
+    "id": 28,
+    "name": "TERRA FERN",
+    "price": 35,
+    "colors": [
+      { "hex": "#4A7C59", "name": "Forest Green" },
+      { "hex": "#8FBC8F", "name": "Light Green" }
+    ],
+    "image": "https://images.unsplash.com/photo-1637967886160-fd78dc3ce3f5?w=900&q=80",
+    "isNew": true,
+    "category": "plants",
+    "description": "A lush, low-maintenance fern that thrives in low-light interiors. Perfect for shelves, bathrooms, and office corners."
+  },
+  {
+    "id": 29,
+    "name": "LUMI CACTUS",
+    "price": 22,
+    "colors": [
+      { "hex": "#5A8C5A", "name": "Cactus Green" },
+      { "hex": "#C4A092", "name": "Desert Sand" }
+    ],
+    "image": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=900&q=80",
+    "isNew": false,
+    "category": "plants",
+    "description": "A compact succulent and cactus collection, ideal for desks and windowsills. Thrives with minimal watering and bright indirect light."
+  },
+  {
+    "id": 30,
+    "name": "MONSTERA LUXE",
+    "price": 89,
+    "colors": [
+      { "hex": "#2D5A27", "name": "Deep Green" },
+      { "hex": "#6B8F5E", "name": "Sage" }
+    ],
+    "image": "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=900&q=80",
+    "isNew": true,
+    "category": "plants",
+    "description": "A striking large-leafed Monstera deliciosa, the ultimate statement plant. Makes an instant impact in living rooms and hallways."
+  },
+  {
+    "id": 31,
+    "name": "ZZ SHIELD",
+    "price": 42,
+    "colors": [{ "hex": "#2D5016", "name": "Dark Green" }],
+    "image": "https://images.unsplash.com/photo-1572688484438-313a6e50c333?w=900&q=80",
+    "isNew": false,
+    "category": "plants",
+    "description": "A ZZ plant known for its glossy leaves and pet-safe properties. Virtually indestructible, thriving in low light and irregular watering."
+  },
+  {
+    "id": 32,
+    "name": "STRING PEARL",
+    "price": 28,
+    "colors": [
+      { "hex": "#7DB87D", "name": "Jade Green" },
+      { "hex": "#C4A092", "name": "Terracotta" }
+    ],
+    "image": "https://images.unsplash.com/photo-1611735341450-74d61e660ad2?w=900&q=80",
+    "isNew": true,
+    "category": "plants",
+    "description": "A cascading string of pearls plant, perfect for hanging baskets and high shelves. Adds a dramatic trailing effect to any space."
+  },
+  {
+    "id": 33,
+    "name": "CLAY PLANTER",
+    "price": 45,
+    "colors": [
+      { "hex": "#C4A092", "name": "Terracotta" },
+      { "hex": "#F5F5F0", "name": "White" },
+      { "hex": "#1a1a1a", "name": "Matte Black" }
+    ],
+    "image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=900&q=80",
+    "isNew": false,
+    "category": "plants",
+    "description": "A hand-thrown ceramic planter with drainage hole and matching saucer. Available in three finishes to complement any interior style."
   }
 ]

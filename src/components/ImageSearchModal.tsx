@@ -385,8 +385,8 @@ export const ImageSearchModal: React.FC<ImageSearchModalProps> = ({
                                       {product.name}
                                     </p>
                                     <p className="text-[11px] text-black/40">
-                                      {toTitleCase(product.category)} · ₹
-                                      {product.price.toLocaleString('en-IN')}
+                                      {toTitleCase(product.category)} · £
+                                      {product.price.toLocaleString('en-GB')}
                                     </p>
                                   </div>
                                 </button>

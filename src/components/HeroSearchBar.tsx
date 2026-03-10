@@ -177,8 +177,8 @@ export function HeroSearchBar() {
                     <div>
                       <p className="font-medium text-sm">{product.name}</p>
                       <p className="text-xs text-black/40">
-                        {toTitleCase(product.category)} · ₹
-                        {product.price.toLocaleString('en-IN')}
+                        {toTitleCase(product.category)} · £
+                        {product.price.toLocaleString('en-GB')}
                       </p>
                     </div>
                   </button>
