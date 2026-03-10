@@ -109,7 +109,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.name}
         </p>
         <p className="text-sm text-black/70">
-          ₹{product.price.toLocaleString('en-IN')}.00
+          £{product.price.toLocaleString('en-GB')}.00
         </p>
         {/* Color swatches */}
         <div className="flex items-center gap-1.5 mt-1">
@@ -352,8 +352,8 @@ export function CategoryClient({
                 onChange={setPriceRange}
               />
               <div className="flex justify-between mt-3 text-xs text-black/60">
-                <span>₹{priceRange[0].toLocaleString('en-IN')}</span>
-                <span>₹{priceRange[1].toLocaleString('en-IN')}</span>
+                <span>£{priceRange[0].toLocaleString('en-GB')}</span>
+                <span>£{priceRange[1].toLocaleString('en-GB')}</span>
               </div>
             </div>
 
@@ -447,8 +447,8 @@ export function CategoryClient({
             />
 
             <div className="flex justify-between mt-3 text-xs text-black/60">
-              <span>₹{priceRange[0].toLocaleString('en-IN')}</span>
-              <span>₹{priceRange[1].toLocaleString('en-IN')}</span>
+              <span>£{priceRange[0].toLocaleString('en-GB')}</span>
+              <span>£{priceRange[1].toLocaleString('en-GB')}</span>
             </div>
           </div>
 
